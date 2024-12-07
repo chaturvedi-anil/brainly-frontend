@@ -14,22 +14,24 @@ const variantStyles = {
     "secondary" : "bg-purple-300 text-purple-600 "
 }
 
-const defaultStyle = "rounded-md m-2 flex";
+const defaultStyle = "flex items-center";
 
-const sizeStyle ={
-    "sm": "py-1 px-2",
-    "md": "py-2 px-4",
-    "lg": "py-4 px-6",
-    "xl": "py-4 px-8"
+const sizeStyle = {
+    "sm": "py-1 px-2 rounded-sm text-sm",
+    "md": "py-2 px-4 rounded-md text-md",
+    "lg": "py-4 px-6 rounded-lg text-lg",
+    "xl": "py-4 px-8 rounded-xl text-xl"
 }
 
 const Button = (props: ButtonProps) => {
 
   return (
     <button className={`${defaultStyle} ${variantStyles[props.variant]} ${sizeStyle[props.size]}`} >
-        {props.startIcon} {props.text} {props.endIcon}
+        {props.startIcon && <span className="mr-2">{props.startIcon}</span>} 
+        {props.text} 
+        {props.endIcon && <span className="ml-2"> {props.endIcon}</span>}
     </button>
   )
 }
 
-export default Button
+export default Button;
