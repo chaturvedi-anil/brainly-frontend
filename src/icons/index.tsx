@@ -1,5 +1,6 @@
 export interface IconProps{
     size: "sm" | "md" | "lg" | "xl",
+    color?: string,
     onClick?: () => void
 }
 

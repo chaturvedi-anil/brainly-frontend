@@ -1,9 +1,20 @@
-import React from 'react'
+import { ReactElement } from "react"
 
-const SidebarOptions = () => {
+interface SidebarProps {
+    icon: ReactElement,
+    optionTitle: string,  
+}
+const SidebarOptions = (props: SidebarProps) => {
   return (
-    <div>SidebarOptions</div>
+    <div className="flex items-center px-4 py-2 mb-2 rounded-md text-gray-800 cursor-pointer hover:bg-purple-200 text-purple-600">
+        <span className="mr-4 text-xl">
+            {props.icon}
+        </span>
+        <span className="text-xl">
+            {props.optionTitle}
+        </span>
+    </div>
   )
 }
 
-export default SidebarOptions
+export default SidebarOptions;
