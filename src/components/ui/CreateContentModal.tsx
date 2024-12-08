@@ -1,6 +1,6 @@
 import XcircleIcon from "../../icons/XcircleIcon"
 import Button from "./Button"
-// import Input from "./Input"
+import Input from "./Input"
 
 interface ModalProps {
   open: boolean,
@@ -22,7 +22,7 @@ const CreateContentModal = (props: ModalProps) => {
 
             </div>
             <div className="mt-4">
-              {/* <Input 
+              <Input 
                 type="text" 
                 size="lg" 
                 placeholder="Enter Title" 
@@ -33,7 +33,7 @@ const CreateContentModal = (props: ModalProps) => {
                 size="lg" 
                 placeholder="Enter Link" 
                 onChangeHandler={() => console.log()} 
-              /> */}
+              />
 
               <div className="mt-4 flex justify-center">
                 <Button 
