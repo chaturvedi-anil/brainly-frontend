@@ -11,16 +11,16 @@ export interface ButtonProps {
 
 const variantStyles = {
     "primary" : "bg-purple-600 text-white ",
-    "secondary" : "bg-purple-300 text-purple-600 "
+    "secondary" : "bg-purple-200 text-purple-600 "
 }
 
-const defaultStyle = "flex items-center";
+const defaultStyle = "flex items-center rounded-md";
 
 const sizeStyle = {
-    "sm": "py-1 px-2 rounded-sm text-sm",
-    "md": "py-2 px-4 rounded-md text-md",
-    "lg": "py-4 px-6 rounded-lg text-lg",
-    "xl": "py-4 px-8 rounded-xl text-xl"
+    "sm": "py-1 px-2 text-sm",
+    "md": "py-2 px-4 text-md",
+    "lg": "py-4 px-6 text-lg",
+    "xl": "py-4 px-8 text-xl"
 }
 
 const Button = (props: ButtonProps) => {
