@@ -6,6 +6,8 @@ import PlusIcon from './icons/PlusIcon';
 import ShareIcon from './icons/ShareIcon';
 import TrashIcon from './icons/TrashIcon';
 import CreateContentModal from './components/ui/CreateContentModal';
+import YoutubeIcon from './icons/YoutubeIcon';
+import TwitterIcon from './icons/TwitterIcon';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,43 +23,59 @@ const App = () => {
       ?
         <CreateContentModal open={isModalOpen} onClose={() => setIsModalOpen(false)} /> 
       :
-        <div className='w-screen m-8 bg-black-400 flex flex-col'>
-          <div className='flex items-center gap-2 justify-end mb-5'>
-            <Button 
-              variant='secondary' 
-              text='Share Brain' 
-              size='md' 
-              startIcon={<ShareIcon size='lg' /> } 
-              onClickHandler={handleShareLink}
-            /> 
-            <Button 
-              variant='primary' 
-              text='Add Content' 
-              size='md' 
-              startIcon={<PlusIcon size='lg' />} 
-              onClickHandler={handleOpenModal} 
-            />
-          </div>
+        <div className='w-screen mx-8 mt-8 bg-black-400 flex flex-col'>
 
-          <div className='flex gap-4'>
+          <header className='flex items-center justify-between mb-12'>
+            <span className='text-3xl text-purple-600 font-bold'>All Notes</span>
+
+            <div className='flex items-center gap-3 justify-end'>
+              <Button 
+                variant='secondary' 
+                text='Share Brain' 
+                size='md' 
+                startIcon={<ShareIcon size='lg' /> } 
+                onClickHandler={handleShareLink}
+              /> 
+              <Button 
+                variant='primary' 
+                text='Add Content' 
+                size='md' 
+                startIcon={<PlusIcon size='lg' />} 
+                onClickHandler={handleOpenModal} 
+              />
+            </div>
+          </header>
+          
+
+          <div className='flex gap-12'>
             <Cart 
               title='First youbtube video' 
-              linkIcon={<ShareIcon size='lg' />} 
+              linkIcon={<YoutubeIcon size='xl' color='text-youtubeRed'/>} 
               type='youtube'
               link={'https://www.youtube.com/embed/mGpBaVPsX8U?si=lGIwvGtHoG0L5Jps'}
               tags={["productivity", "c++", "java"]}
-              shareIcon={<ShareIcon size='lg' />}
-              trashIcon={<TrashIcon size='lg' />}
+              shareIcon={<ShareIcon size='xl' />}
+              trashIcon={<TrashIcon size='xl' />}
             />
 
             <Cart 
               title='First twitter post' 
-              linkIcon={<ShareIcon size='lg' />} 
+              linkIcon={<TwitterIcon size='xl' color='text-twitterBlue'/>} 
               type='twitter'
               link={'https://twitter.com/Chaturvedi_99/status/1836803107306836267?ref_src=twsrc%5Etfw'}
               tags={["productivity", "c++", "java"]}
-              shareIcon={<ShareIcon size='lg' />}
-              trashIcon={<TrashIcon size='lg' />}
+              shareIcon={<ShareIcon size='xl' />}
+              trashIcon={<TrashIcon size='xl' />}
+            />
+
+            <Cart 
+              title='First twitter post' 
+              linkIcon={<TwitterIcon size='xl' color='text-twitterBlue' />} 
+              type='twitter'
+              link={'https://twitter.com/Chaturvedi_99/status/1836803107306836267?ref_src=twsrc%5Etfw'}
+              tags={["productivity", "c++", "java"]}
+              shareIcon={<ShareIcon size='xl' />}
+              trashIcon={<TrashIcon size='xl' />}
             />
           </div>
         </div> 

@@ -10,7 +10,7 @@ interface CartProps {
     trashIcon: ReactElement
 }
 
-const defaultStyle = "rounded-xl p-6 border shadow-inner w-96 bg-white"
+const defaultStyle = "rounded-xl p-6 border shadow-inner w-4/12 bg-white"
 
 const Cart = (props: CartProps) => {
   return (
@@ -18,13 +18,13 @@ const Cart = (props: CartProps) => {
         <div className='flex align-center justify-between'>
 
             <div className='flex items-center'>
-                <span className='mr-3'>{props.linkIcon}</span>
-                <span className='text-lg font-normal capitalize'>{props.title}</span>
+                <span className='mr-3 cursor-pointer'>{props.linkIcon}</span>
+                <span className='text-xl font-normal capitalize'>{props.title}</span>
             </div>
 
             <div className='flex items-center'>
-                <span className='mr-2'>{props.shareIcon}</span>
-                <span>{props.trashIcon}</span>
+                <span className='mr-3 cursor-pointer'>{props.shareIcon}</span>
+                <span className='cursor-pointer'>{props.trashIcon}</span>
             </div>
         </div>  
 

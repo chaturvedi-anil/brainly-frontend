@@ -16,7 +16,9 @@ export default {
           200: "#d9ddee",
           500: "#9492db",
           600: "#7164c0"
-        }
+        },
+        twitterBlue: '#1DA1F2',
+        youtubeRed: '#FF0000',
       }
     },
   },
