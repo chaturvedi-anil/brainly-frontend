@@ -3,10 +3,10 @@ import { ReactElement } from "react";
 export interface ButtonProps {
     variant: "primary" | "secondary";
     size: "sm" | "md" | "lg" | "xl";
-    text: string;
+    text?: string;
     startIcon?: ReactElement,
     endIcon?: ReactElement,
-    onClick?: () => void 
+    onClickHandler: () => any
 }
 
 const variantStyles = {
@@ -19,14 +19,17 @@ const defaultStyle = "flex items-center rounded-md";
 const sizeStyle = {
     "sm": "py-1 px-2 text-sm",
     "md": "py-2 px-4 text-md",
-    "lg": "py-4 px-6 text-lg",
+    "lg": "py-3 px-6 text-lg",
     "xl": "py-4 px-8 text-xl"
 }
 
 const Button = (props: ButtonProps) => {
-
+  
   return (
-    <button className={`${defaultStyle} ${variantStyles[props.variant]} ${sizeStyle[props.size]}`} >
+    <button 
+      className={`${defaultStyle} ${variantStyles[props.variant]} ${sizeStyle[props.size]}`} 
+      onClick={props.onClickHandler} 
+    >
         {props.startIcon && <span className="mr-2">{props.startIcon}</span>} 
         {props.text} 
         {props.endIcon && <span className="ml-2"> {props.endIcon}</span>}
