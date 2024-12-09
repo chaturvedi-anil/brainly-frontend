@@ -31,7 +31,7 @@ const Sidebar = () => {
         }
     ] 
   return (
-    <div className="h-screen bg-white w-3/12 border-r shadow-inner position-fixed left-0 top-0 flex flex-col">
+    <div className="h-screen bg-white border-r shadow-inner position-fixed left-0 top-0 flex flex-col">
         {/* top  */}
        <div className="flex items-center border-b-2 py-4 px-4">
             <SunIcon size="xl" color="text-purple-800"/>

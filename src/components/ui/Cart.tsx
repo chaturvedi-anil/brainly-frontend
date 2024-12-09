@@ -10,7 +10,7 @@ interface CartProps {
     trashIcon: ReactElement
 }
 
-const defaultStyle = "rounded-xl p-6 border shadow-inner w-4/12 bg-white"
+const defaultStyle = "rounded-xl p-6 border shadow-inner w-[450px] bg-white"
 
 const Cart = (props: CartProps) => {
   return (
