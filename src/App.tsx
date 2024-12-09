@@ -3,6 +3,7 @@ import Sidebar from './components/ui/Sidebar';
 import Dashboard from './pages/Dashboard';
 import CreateContentModal from "./components/ui/CreateContentModal";
 import Signin from './pages/Signin';
+import Signup from './pages/Signup';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

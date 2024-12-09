@@ -8,10 +8,10 @@ const Signup = () => {
 
             <div className='flex flex-col items-center mb-10'>
                 <h2 className='text-4xl font-bold text-purple-600'>
-                    Login
+                    Create Your New Account
                 </h2>
                 <span className='text-md text-gray-500'>
-                    Welcome back! Please enter your details
+                    Welcome! Please enter your details
                 </span>
             </div>
 
@@ -28,6 +28,12 @@ const Signup = () => {
                     size='lg'
                     onChangeHandler={() => console.log("username : ")}
                 />
+                <Input 
+                    type='password'
+                    placeholder='Re-type password...'
+                    size='lg'
+                    onChangeHandler={() => console.log("username : ")}
+                />
             </div>
 
             <div className="mt-4 flex justify-center">
@@ -36,7 +42,7 @@ const Signup = () => {
                     onClickHandler={() => {
                     console.log("submit button");
                     }}
-                    text="Login"
+                    text="Signup"
                     size="lg"
                     extraClass="w-full flex justify-center text-xl"
                     loading={false}

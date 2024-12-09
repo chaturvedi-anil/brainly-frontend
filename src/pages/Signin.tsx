@@ -4,14 +4,14 @@ import Button from '../components/ui/Button';
 const Signin = () => {
   return (
     <div className='h-screen w-screen bg-white flex items-center justify-center'>
-        <div className='flex flex-col justify-center border-2 p-8 rounded-xl'>
+        <div className='flex flex-col min-w-96 justify-center border-2 p-8 rounded-xl'>
 
             <div className='flex flex-col items-center mb-10'>
                 <h2 className='text-4xl font-bold text-purple-600'>
-                    Create Your New Account
+                    Login
                 </h2>
                 <span className='text-md text-gray-500'>
-                    Welcome! Please enter your details
+                    Welcome back! Please enter your details
                 </span>
             </div>
 
@@ -28,12 +28,6 @@ const Signin = () => {
                     size='lg'
                     onChangeHandler={() => console.log("username : ")}
                 />
-                <Input 
-                    type='password'
-                    placeholder='Re-type password...'
-                    size='lg'
-                    onChangeHandler={() => console.log("username : ")}
-                />
             </div>
 
             <div className="mt-4 flex justify-center">
@@ -42,7 +36,7 @@ const Signin = () => {
                     onClickHandler={() => {
                     console.log("submit button");
                     }}
-                    text="Signup"
+                    text="Login"
                     size="lg"
                     extraClass="w-full flex justify-center text-xl"
                     loading={false}
