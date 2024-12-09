@@ -17,7 +17,7 @@ const Input = (props: InputProps) => {
         type={props.type} 
         placeholder={props.placeholder} 
         onChange={props.onChangeHandler}  
-        className={`rounded-md border px-4 py-2 mt-4 w-full text-gray-500 ${sizeStyle[props.size]}`}
+        className={`rounded-md border px-4 py-2 mt-4 w-full text-gray-500 focus:outline-purple-200 ${sizeStyle[props.size]}`}
     />
   )
 }
