@@ -10,7 +10,7 @@ interface ModalProps {
 const CreateContentModal = (props: ModalProps) => {
   return <>
     {props.open && 
-        <div className='w-screen h-screen bg-gray-600 top-0 left-0 opacity-100 flex justify-center items-center'>
+        <div className='w-screen h-screen top-0 left-0 flex justify-center items-center'>
           <div className="bg-white w-96 min-w-auto p-4 rounded-lg z-20">
             <div className="flex items-center justify-between">
 
