@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from "axios";
 
 const BASE_URL = "http://localhost:3000/api/v1"
@@ -10,17 +10,23 @@ interface requestProps {
 }
 const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isError, setIsError] = useState(false);
+    const [isError, setIsError] = useState(null);
     const sendHttpRequest = async ({method, url, body} : requestProps) => {
         
         setIsLoading(true);
         await axios[method](BASE_URL + url, body).then((response) => {
             const data = response.data;
+
+            if (url === "/signin") {
+                localStorage.setItem("token", data.token);
+            }
             return data;
-        }).catch ((error: any) => {
-            const reqError = error?.response?.data?.message || "Something went wrong!";
+        }).catch (async (error: any) => {
+            console.log("error  : ", error);
+            
+            const reqError = await error?.response?.data?.message || "Something went wrong!";
             setIsError(reqError);
-            return null;
+            return reqError;
         }).finally(() => {
             setIsLoading(false);
         })

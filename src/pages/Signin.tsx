@@ -20,7 +20,7 @@ const Signin = () => {
         } else {
             const responseData = await sendHttpRequest({
                 method: "post",
-                url: "/signup",
+                url: "/signin",
                 body: { username, password }
             });
             

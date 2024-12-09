@@ -26,13 +26,11 @@ const CreateContentModal = (props: ModalProps) => {
                 type="text" 
                 size="lg" 
                 placeholder="Enter Title" 
-                onChangeHandler={() => console.log()} 
               />
               <Input 
                 type="url" 
                 size="lg" 
                 placeholder="Enter Link" 
-                onChangeHandler={() => console.log()} 
               />
 
               <div className="mt-4 flex justify-center">
