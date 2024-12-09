@@ -11,7 +11,7 @@ const Signin = () => {
                     Login
                 </h2>
                 <span className='text-md text-gray-500'>
-                    Welcome back! Please enter your details
+                    Welcome back!
                 </span>
             </div>
 

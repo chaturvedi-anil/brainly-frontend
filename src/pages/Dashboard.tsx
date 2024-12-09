@@ -14,8 +14,8 @@ const Dashboard = ({setIsModalOpen}: DashboardProps) => {
         setIsModalOpen((prevState) => !prevState);
       }
     
-      const handleShareLink = ():void => {};
-  return (
+    const handleShareLink = ():void => {};
+    return (
         <main className='w-full mx-8 mt-8 bg-black-400 flex flex-col'>
             <Header handleShareLink={handleShareLink} handleOpenModal={handleOpenModal} />
             <div className='flex flex-wrap gap-12 overflow-y-scroll h-[720px]'>
@@ -80,4 +80,4 @@ const Dashboard = ({setIsModalOpen}: DashboardProps) => {
     )
 }
 
-export default Dashboard
+export default Dashboard;
