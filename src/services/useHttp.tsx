@@ -8,13 +8,21 @@ interface requestProps {
     url: string,
     body?: any
 }
+
 const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(null);
+    const token = localStorage.getItem('token') || "";
     const sendHttpRequest = async ({method, url, body} : requestProps) => {
-        
+    
         setIsLoading(true);
-        await axios[method](BASE_URL + url, body).then((response) => {
+        await axios[method](BASE_URL + url, body,
+            {
+                headers: {
+                  'token': token
+                }
+            }
+        ).then((response) => {
             const data = response.data;
 
             if (url === "/signin") {

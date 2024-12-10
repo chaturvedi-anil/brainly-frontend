@@ -14,7 +14,16 @@ import ProtectedRoute from './pages/ProtectedRoute';
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isAuthenticated = useAuth();
-  
+
+  const MainApp = () => {
+    return <>
+      <div className='w-screeen h-screeen flex opacity-90'>
+        <Sidebar />
+        <Dashboard setIsModalOpen={setIsModalOpen} />
+      </div>
+      {isModalOpen && <CreateContentModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />} 
+    </>
+  }
   return <BrowserRouter>
     <Routes>
       {/* Public routes */}
@@ -23,20 +32,10 @@ const App = () => {
         <Route path='/login' element={<Signin />} />
         <Route path='/signup' element={<Signup /> } />
       </Route>
-      
-
 
       <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} redirectPath='/login ' />} >
         <Route path='/dashboard' 
-          element={
-            <div>
-              <div className='w-screeen h-screeen flex'>
-                <Sidebar />
-                <Dashboard setIsModalOpen={setIsModalOpen} />
-              </div>
-              {isModalOpen && <CreateContentModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />}  
-            </div> 
-          }
+          element={<MainApp />}
         />
       </Route>
     </Routes>
