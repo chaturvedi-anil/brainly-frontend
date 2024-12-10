@@ -14,16 +14,19 @@ import ProtectedRoute from './pages/ProtectedRoute';
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isAuthenticated = useAuth();
-
+  
   return <BrowserRouter>
     <Routes>
       {/* Public routes */}
       <Route path='/' element={<Home />} />
-      <Route path='/signup' element={<Signup /> } />
-      <Route path='/login' element={<Signin />} />
+      <Route element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirectPath='/dashboard'/>} >
+        <Route path='/login' element={<Signin />} />
+        <Route path='/signup' element={<Signup /> } />
+      </Route>
+      
 
 
-      <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>} >
+      <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} redirectPath='/login ' />} >
         <Route path='/dashboard' 
           element={
             <div>

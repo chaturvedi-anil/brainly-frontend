@@ -1,9 +1,11 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import useHttp from '../services/useHttp';
 
 const Signup = () => {
+    const navigate = useNavigate();
     const { isLoading, isError, sendHttpRequest } = useHttp();
     const usernameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
@@ -39,6 +41,7 @@ const Signup = () => {
         if (passwordRef.current) passwordRef.current.value = "";
         if (confirmPasswordRef.current) confirmPasswordRef.current.value = "";
 
+        navigate("/login");
        
     }
   return (

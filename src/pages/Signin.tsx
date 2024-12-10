@@ -1,11 +1,13 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 
 import useHttp from '../services/useHttp';
 
 const Signin = () => {
-
+    const navigate = useNavigate();
     const { isLoading, isError, sendHttpRequest } = useHttp();
     const usernameRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
@@ -33,7 +35,7 @@ const Signin = () => {
  
         if (usernameRef.current) usernameRef.current.value = "";
         if (passwordRef.current) passwordRef.current.value = "";
-        
+        return navigate("/dashboard");
      }
     return (
         <div className='h-screen w-screen bg-white flex items-center justify-center'>
