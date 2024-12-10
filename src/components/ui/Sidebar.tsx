@@ -41,7 +41,7 @@ const Sidebar = () => {
        {/* middle */}
        <div className="flex-1 p-4 flex-col overflow-y-auto">
             {sidebarOptionsList.map((option) => (
-                <SidebarOptions icon={option.icon} optionTitle={option.optionTitle} />
+                <SidebarOptions key={option.optionTitle} icon={option.icon} optionTitle={option.optionTitle} />
             ))}
        </div>
 

@@ -5,7 +5,7 @@ const Home = () => {
     <div >
       <Link className='pl-10' to={"/dashboard"}> Dashboard </Link>
       <Link className='pl-10' to={"/signup"}> Signup </Link>
-      <Link className='pl-10' to={"/signin"}> Signin</Link>
+      <Link className='pl-10' to={"/login"}> Signin</Link>
     </div>
   )
 }

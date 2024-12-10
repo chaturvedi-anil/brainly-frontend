@@ -5,9 +5,11 @@ import TrashIcon from "../icons/TrashIcon";
 import Cart from "../components/ui/Cart";
 import Header from '../components/ui/Header';
 
+
 interface DashboardProps {
     setIsModalOpen: (value: boolean | ((prevState: boolean) => boolean)) => void
 }
+
 const Dashboard = ({setIsModalOpen}: DashboardProps) => {
 
     const handleOpenModal = () => {

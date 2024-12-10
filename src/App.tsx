@@ -8,26 +8,34 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard'
 import Sidebar from './components/ui/Sidebar';
 import CreateContentModal from './components/ui/CreateContentModal';
+import useAuth from './services/useAuth';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isAuthenticated = useAuth();
 
   return <BrowserRouter>
     <Routes>
+      {/* Public routes */}
       <Route path='/' element={<Home />} />
       <Route path='/signup' element={<Signup /> } />
-      <Route path='/signin' element={<Signin />} />
-      <Route path='/dashboard' 
-        element={
-          <div>
-            <div className='w-screeen h-screeen flex'>
-              <Sidebar />
-              <Dashboard setIsModalOpen={setIsModalOpen} />
-            </div>
-            {isModalOpen && <CreateContentModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />}  
-          </div> 
-        }
-      />
+      <Route path='/login' element={<Signin />} />
+
+
+      <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>} >
+        <Route path='/dashboard' 
+          element={
+            <div>
+              <div className='w-screeen h-screeen flex'>
+                <Sidebar />
+                <Dashboard setIsModalOpen={setIsModalOpen} />
+              </div>
+              {isModalOpen && <CreateContentModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />}  
+            </div> 
+          }
+        />
+      </Route>
     </Routes>
   </BrowserRouter>
 }
