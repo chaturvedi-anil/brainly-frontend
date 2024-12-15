@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import Arror_rightIcon from "../../icons/Arror_rightIcon"
 import DocumentIcon from "../../icons/DocumentIcon"
 import HashIcon from "../../icons/HashIcon"
@@ -34,8 +35,10 @@ const Sidebar = () => {
     <div className="h-screen bg-white border-r shadow-inner position-fixed left-0 top-0 flex flex-col">
         {/* top  */}
        <div className="flex items-center border-b-2 py-4 px-4">
-            <SunIcon size="xl" color="text-purple-800"/>
-            <span className="text-black-400 font-bold text-3xl ml-4">Brainly</span>
+            <SunIcon size="xl" color="text-purple-600"/>
+            <NavLink to={"/"}>
+                <span className="text-purple-600 font-bold text-3xl ">Brainly</span>
+            </NavLink>
        </div>   
 
        {/* middle */}

@@ -1,44 +1,45 @@
 import { useState } from 'react';
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 const BASE_URL = "http://localhost:3000/api/v1"
 
 interface requestProps {
     method: "get" | "post" | "put" | "delete",
     url: string,
-    body?: any
+    body?: any,
 }
 
 const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(null);
-    const token = localStorage.getItem('token') || "";
+    
     const sendHttpRequest = async ({method, url, body} : requestProps) => {
-    
-        setIsLoading(true);
-        await axios[method](BASE_URL + url, body,
-            {
-                headers: {
-                  'token': token
-                }
-            }
-        ).then((response) => {
-            const data = response.data;
+        const headers = {token: localStorage.getItem("token") || ""};
 
+        const reqConfig: AxiosRequestConfig = {
+            method, url: `${BASE_URL}${url}`,
+            headers, ...(body && {data: body})
+        }
+
+        try {
+            setIsLoading(true);
+            setIsError(null);
+            const responseData = await axios(reqConfig);
             if (url === "/signin") {
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("token", responseData.data?.token);
             }
-            return data;
-        }).catch (async (error: any) => {
-            console.log("error  : ", error);
+            return responseData.data;
+        } catch (error: any) {
             
-            const reqError = await error?.response?.data?.message || "Something went wrong!";
-            setIsError(reqError);
-            return reqError;
-        }).finally(() => {
+            const errorMessage =
+                error.response?.data?.message || error.message || "An unexpected error occurred.";
+
+            setIsError(errorMessage);
+            throw new Error(errorMessage);
+        } finally {
             setIsLoading(false);
-        })
-    
+        }
+        
     }
     
     return { isLoading, isError, sendHttpRequest}
