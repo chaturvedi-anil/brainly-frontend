@@ -3,10 +3,11 @@ import {ReactElement} from 'react'
 interface CartProps {
     title: string,
     linkIcon: ReactElement,
-    type: "twitter" | "youtube",
+    type: string,
     link: string,
     tags: string[],
     shareIcon: ReactElement,
+    editIcon?: ReactElement,
     trashIcon: ReactElement
 }
 
@@ -24,6 +25,7 @@ const Cart = (props: CartProps) => {
 
             <div className='flex items-center'>
                 <span className='mr-3 cursor-pointer'>{props.shareIcon}</span>
+                <span className='mr-3 cursor-pointer'>{props.editIcon}</span>
                 <span className='cursor-pointer'>{props.trashIcon}</span>
             </div>
         </div>  
@@ -40,17 +42,17 @@ const Cart = (props: CartProps) => {
 
         </div>
 
-        <div className='flex items-center my-2'>
+        <div className='flex flex-wrap items-center my-2'>
             {props.tags.map((tag, index) => (
-                <span className='bg-purple-200 text-purple-600 rounded-3xl px-4 py-1 mr-2' key={index}>
+                <span className='bg-purple-200 text-purple-600 rounded-3xl px-4 py-1 m-1' key={index}>
                     {`#${tag}`}
                 </span>
             ))}
         </div>
 
-        <div className='flex items-center mt-2'>
+        <div className='flex items-center justify-between mt-2'>
             <span className='text-gray-600'>
-                Added on 09/11/2024
+                Added on {'09/11/2024'}
             </span>
         </div>
 

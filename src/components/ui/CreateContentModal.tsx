@@ -14,6 +14,7 @@ const CreateContentModal = (props: ModalProps) => {
   const titleRef = useRef<HTMLInputElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
   const typeRef = useRef<HTMLInputElement>(null);
+  const tagsRef = useRef<HTMLInputElement>(null);
 
   const { isLoading, isError, sendHttpRequest } = useHttp();
 
@@ -21,24 +22,32 @@ const CreateContentModal = (props: ModalProps) => {
     const title = titleRef.current?.value;
     const link = linkRef.current?.value;
     const type = typeRef.current?.value;
+    const tagsList = tagsRef.current?.value;
 
-    if (!title || !link || !type) {
+    if (!title || !link || !type || !tagsList) {
       console.log("all fields are mandatry!");
       return;
     } else {
-      const responseData = await sendHttpRequest({method:"post", url: "/content", body: {title, link, type}});
+      if( (type === "twitter") || (type === "youtube")){
+        const tags = tagsList.split(/\s+/);
       
-      if(isError){
-        console.log("Error in content cration : ", isError);
-        return;
-      } else {
-        console.log("responseData : ", responseData);
-        props.onClose();
-      }
-    }
+        const responseData = await sendHttpRequest({method:"post", url: "/content", body: {title, link, type, tags}});
+        
+        if(isError){
+          console.log("Error in content cration : ", isError);
+          return;
+        } else {
+          console.log("responseData : ", responseData);
+          props.onClose();
+        }
 
-    if (titleRef.current) titleRef.current.value = "";
-    if (linkRef.current) linkRef.current.value = "";
+        if (titleRef.current) titleRef.current.value = "";
+        if (linkRef.current) linkRef.current.value = "";
+        if (typeRef.current) typeRef.current.value = "";
+        if (tagsRef.current) tagsRef.current.value = "";
+      }
+      
+    }
   }
   return <>
     {props.open && 
@@ -69,8 +78,14 @@ const CreateContentModal = (props: ModalProps) => {
               <Input 
                 type="text" 
                 size="lg" 
-                placeholder="Link Type eg: image, audio, video, article" 
+                placeholder="Type of link: twitter or youtube" 
                 ref={typeRef}
+              />
+              <Input 
+                type="text" 
+                size="lg" 
+                placeholder="Enter Tags" 
+                ref={tagsRef}
               />
 
               <div className="mt-4 flex justify-center">
